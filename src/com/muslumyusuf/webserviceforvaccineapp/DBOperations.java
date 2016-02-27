@@ -151,9 +151,6 @@ public class DBOperations {
                 break;
             case 6:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.SIX_FLAG);
-                break;
-            default:
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_DABT_IPA_HIB_STATUS_ACTION, soapSerializationEnvelope);
@@ -178,7 +175,6 @@ public class DBOperations {
                 break;
             case 2:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.TWO_FLAG);
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_HEPATIT_A_STATUS_ACTION, soapSerializationEnvelope);
@@ -204,7 +200,6 @@ public class DBOperations {
                 break;
             case 2:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.TWO_FLAG);
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_HEPATIT_B_STATUS_ACTION, soapSerializationEnvelope);
@@ -229,7 +224,6 @@ public class DBOperations {
                 break;
             case 2:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.TWO_FLAG);
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_KKK_STATUS_ACTION, soapSerializationEnvelope);
@@ -261,9 +255,6 @@ public class DBOperations {
                 break;
             case 4:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.FOUR_FLAG);
-                break;
-            default:
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_KPA_STATUS_ACTION, soapSerializationEnvelope);
@@ -288,7 +279,6 @@ public class DBOperations {
                 break;
             case 2:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.TWO_FLAG);
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_OPA_STATUS_ACTION, soapSerializationEnvelope);
@@ -317,9 +307,6 @@ public class DBOperations {
                 break;
             case 3:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.THREE_FLAG);
-                break;
-            default:
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_RVA_STATUS_ACTION, soapSerializationEnvelope);
@@ -357,9 +344,6 @@ public class DBOperations {
                 break;
             case 6:
                 soapObject.addProperty(Tags.VACCINE_FLAG, Flags.INFLUENZA_FLAG);
-                break;
-            default:
-                break;
         }
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.UPDATE_VACCINES_STATUS_ACTION, soapSerializationEnvelope);
