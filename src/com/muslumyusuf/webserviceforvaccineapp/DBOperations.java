@@ -22,6 +22,7 @@ public class DBOperations {
 
     private static final SoapSerializationEnvelope soapSerializationEnvelope = new SoapSerializationEnvelope(SoapSerializationEnvelope.VER11);
     private static final HttpTransportSE httpTransport = new HttpTransportSE(Url.URL);
+    private static SoapObject soapObject;
 
     /**
      * Log-in method
@@ -34,7 +35,7 @@ public class DBOperations {
      * @throws java.io.IOException
      */
     public int log_in(String username, String password) throws XmlPullParserException, IOException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.LOG_IN);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.LOG_IN);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapObject.addProperty(Tags.PASSWORD_TAG, password);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
@@ -53,7 +54,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public JSONObject getBabies(String username) throws JSONException, IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_BABIES);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_BABIES);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.GET_BABIES_ACTION, soapSerializationEnvelope);
@@ -71,7 +72,7 @@ public class DBOperations {
      * @throws org.json.JSONException
      */
     public JSONObject getCompletedVaccines(int baby_id) throws XmlPullParserException, IOException, JSONException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_COMPLETED_VACCINES);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_COMPLETED_VACCINES);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.GET_COMPLETED_VACCINES_ACTION, soapSerializationEnvelope);
@@ -90,7 +91,7 @@ public class DBOperations {
      * @throws java.io.IOException
      */
     public int register(String username, String fullName, String password, String e_mail) throws XmlPullParserException, IOException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.REGISTER);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.REGISTER);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapObject.addProperty(Tags.FULLNAME_TAG, fullName);
         soapObject.addProperty(Tags.PASSWORD_TAG, password);
@@ -111,7 +112,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int addBaby(String username, String baby_name, String date_of_birth) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ADD_BABY);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ADD_BABY);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapObject.addProperty(Tags.BABY_NAME_TAG.toLowerCase(), baby_name);
         soapObject.addProperty(Tags.DATE_TAG, date_of_birth);
@@ -130,7 +131,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_DaBT_Ipa_Hib_Vaccine(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_DABT_IPA_HIB_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_DABT_IPA_HIB_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -169,7 +170,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_Hepatit_A(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_HEPATIT_A_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_HEPATIT_A_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -195,7 +196,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_Hepatit_B(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_HEPATIT_B_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_HEPATIT_B_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -220,7 +221,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_KKK(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_KKK_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_KKK_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -246,7 +247,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_KPA(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_KPA_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_KPA_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -279,7 +280,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_OPA(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_OPA_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_OPA_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -305,7 +306,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_RVA(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_RVA_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_RVA_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -336,7 +337,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int update_Vaccines(int baby_id, int flag) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_VACCINES_STATUS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPDATE_VACCINES_STATUS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         switch (flag) {
             case 1:
@@ -376,7 +377,7 @@ public class DBOperations {
      * @throws java.io.IOException
      */
     public int addComment(String username, String vaccine_name, String comment) throws XmlPullParserException, IOException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ADD_COMMENT);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ADD_COMMENT);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapObject.addProperty(Tags.VACCINE_NAME_TAG, vaccine_name);
         soapObject.addProperty(Tags.COMMENT_TAG, comment);
@@ -394,7 +395,7 @@ public class DBOperations {
      * @throws java.io.IOException
      */
     public int forgottenpassword(String username, String newPassword) throws XmlPullParserException, IOException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.FORGOTTEN_PASSWORD);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.FORGOTTEN_PASSWORD);
         soapObject.addProperty(Tags.USERNAME_TAG, username);
         soapObject.addProperty(Tags.NEW_PASSWORD, newPassword);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
@@ -415,7 +416,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public JSONObject getComments(String vaccine_name, int begin, int end) throws JSONException, IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_COMMENTS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.GET_COMMENTS);
         soapObject.addProperty(Tags.VACCINE_NAME_TAG, vaccine_name);
         soapObject.addProperty(Tags.BEGINNING_TAG, begin);
         soapObject.addProperty(Tags.END_TAG, end);
@@ -433,7 +434,7 @@ public class DBOperations {
      * @throws org.json.JSONException
      */
     public JSONObject getVaccineNames() throws IOException, XmlPullParserException, JSONException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ALL_VACCINE_NAMES);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.ALL_VACCINE_NAMES);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.GET_VACCINE_NAMES_ACTION, soapSerializationEnvelope);
         return new JSONObject(soapSerializationEnvelope.getResponse().toString());
@@ -450,7 +451,7 @@ public class DBOperations {
      * @throws org.json.JSONException
      */
     public JSONObject getBabyVaccineDetails(int baby_id) throws IOException, XmlPullParserException, JSONException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.BABY_VACCINE_DETAILS);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.BABY_VACCINE_DETAILS);
         soapObject.addProperty(Tags.BABY_ID_TAG.toLowerCase(), baby_id);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.BABY_VACCINE_DETAILS_ACTION, soapSerializationEnvelope);
@@ -466,7 +467,7 @@ public class DBOperations {
      * @throws org.xmlpull.v1.XmlPullParserException
      */
     public int sendVerificationCode(String e_mail) throws IOException, XmlPullParserException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.SEND_VERIFICATION_CODE);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.SEND_VERIFICATION_CODE);
         soapObject.addProperty(Tags.E_MAIL, e_mail);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.SEND_VERIFICATIN_CODE_ACTION, soapSerializationEnvelope);
@@ -483,7 +484,7 @@ public class DBOperations {
      * @throws java.io.IOException
      */
     public int validateVerificationCode(String e_mail, String code) throws XmlPullParserException, IOException {
-        SoapObject soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.VALIDATE_VERIFICATION_CODE);
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.VALIDATE_VERIFICATION_CODE);
         soapObject.addProperty(Tags.E_MAIL, e_mail);
         soapObject.addProperty(Tags.CODE, code);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
@@ -491,4 +492,25 @@ public class DBOperations {
         return Integer.parseInt(soapSerializationEnvelope.getResponse().toString());
     }
 
+    /**
+     *
+     * Uploads image to ftp and insert image URL to database
+     *
+     * @param username username of currently logged-in
+     * @param fileName image file selected by user
+     * @param imageBytes bytes of selected file
+     * @return -2 if exception occur during upload ftp, -1 if exception occurs
+     * during insert database 1 successfully updated, 0 not updated
+     * @throws java.io.IOException
+     * @throws org.xmlpull.v1.XmlPullParserException
+     */
+    public int uploadImage(String username, String fileName, byte[] imageBytes) throws IOException, XmlPullParserException {
+        soapObject = new SoapObject(NameSpace.NAMESPACE, Methods.UPLOAD_IMAGE);
+        soapObject.addProperty(Tags.USERNAME_TAG, username);
+        soapObject.addProperty(Tags.FILENAME, fileName);
+        soapObject.addProperty(Tags.IMAGE_BYTES, imageBytes);
+        soapSerializationEnvelope.setOutputSoapObject(soapObject);
+        httpTransport.call(Actions.UPLOAD_IMAGE_ACTION, soapSerializationEnvelope);
+        return Integer.parseInt(soapSerializationEnvelope.getResponse().toString());
+    }
 }
