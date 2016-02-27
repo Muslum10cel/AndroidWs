@@ -40,7 +40,7 @@ public class DBOperations {
         soapObject.addProperty(Tags.PASSWORD_TAG, password);
         soapSerializationEnvelope.setOutputSoapObject(soapObject);
         httpTransport.call(Actions.LOG_IN_ACTION, soapSerializationEnvelope);
-        return (Integer.parseInt(soapSerializationEnvelope.getResponse().toString()));
+        return Integer.parseInt(soapSerializationEnvelope.getResponse().toString());
     }
 
     /**
